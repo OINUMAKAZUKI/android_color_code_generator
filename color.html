@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
 <title>android color select</title>
 
 <script type="text/javascript">
-<!--
 function sample() {
 	// % alpha
 	var p = 12;
@@ -14,12 +14,12 @@ function sample() {
 	var colorText = document.getElementById('text_area_color').value;
 	var alphaText = document.getElementById('text_area_alpha').value;
 	//描画コンテキストの取得
-	var canvas = document.getElementById('sample1');
+	var canvas = document.getElementById('canvas');
 
 	if (canvas.getContext) {
 		var context = canvas.getContext('2d');
 		//初期化 
-		context.clearRect(20, 40, 200, 100); 
+		context.clearRect(0, 0, canvas.width, canvas.height); 
 		context.beginPath();
 		context.fillStyle = "#" + colorText;
 
@@ -28,30 +28,32 @@ function sample() {
 
 		context.globalAlpha = alpha;
 		//左から20上から40の位置に、幅
-		context.fillRect(20,40,200,100); 
+		context.fillRect(0, 0, canvas.width, canvas.height); 
 		context.fill();
 
 		var _wariai = Math.round(wariai);
 		pTag.innerHTML = "#" + _wariai.toString(16) + colorText;
 	} 
 }
-//-->
 </script>
-
-<style>
-
-</style>
 
 </head>
 
 <body onLoad="sample()">
-	<div>
-		<h2>android color</h2>
-		<input type="text" id="text_area_color">
-		<input type="text" id="text_area_alpha">
-		<button onClick="sample()" class="btn col-xs-3">変更</button>
+	<div class="container">
+		<h1>Android color code enerator</h1>
+		<div class="color-form">
+			<lable class="color-form-label">Color 16進数:</lable>
+			<input type="text" id="text_area_color">
+		</div>
+		<div class="color-form">
+			<lable class="color-form-label">Alpha:</lable>
+			<input type="text" id="text_area_alpha">
+		</div>
 
-		<canvas id="sample1">
+		<button onClick="sample()" class="btn btn-default">変更</button>
+
+		<canvas id="canvas">
 			図形を表示するには、canvasタグをサポートしたブラウザが必要です。
 		</canvas>
 
